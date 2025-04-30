@@ -2,44 +2,35 @@
 
 Static pages with YAML frontmatter, embedded in your Rails app.
 
-Simple as the devil, like…
-
+As simple as, …  
 **`app/views/pages/exorcism_tips.html.md`:**
 
 ```markdown
 ---
 title: 3 tips for the PERFECT exorcism
+author: Beelzebub
 tags:
 - listicles
 - devil worship
 - activity ideas
 ---
-Through trial and error, I've found that the perfect exorcism starts with a refreshing drink.
+By <%= current_page.author %>.
+
+Through trial and error, I've found that the perfect exorcism
+starts with a refreshing drink.
+
+Tagged <%= render "tag_list", tags: current_page.tags %>:
 
 ## Devilishly good lemonade recipe
 
-...
+…
 ```
 
 ## Usage
 
-```ruby
-# config/routes.rb
-
-# ...
-get("*page", to: "pages#show", as: :page, constraints: PagesController.constraint)
-# ...
-```
-
-```ruby
-class PagesController < ApplicationController
-  include SatanicPages::Controller
-end
-```
-
 In `app/views/layouts/pages.html.erb`:
 
-```
+```ruby
 <%= render_layout "application" do %>
   <h1><%= current_page.title %></h1>
   <article>
@@ -56,5 +47,19 @@ $ bundle add satanic_pages
 $ bundle add markdown-rails # optional, but probably
 ```
 
+Add the _Concern_ to a regular controller:
+
+```ruby
+class PagesController < ApplicationController
+  include SatanicPages::Controller
+end
+```
+
+And set up a wildcard route:
+
+```ruby
+get("*page", to: "pages#show", as: :page, constraints: PagesController.constraint)
+```
+
 ## License
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+[MIT](https://opensource.org/licenses/MIT)
