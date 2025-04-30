@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Dummy" %></title>
+    <title><%= current_page.title || "Dummy" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -21,7 +21,8 @@
     <%= stylesheet_link_tag :app %>
   </head>
 
-  <body>
+  <body style="border: 1px dashed green; padding: 20px;">
+    <h1>Application layout</h1>
     <%= yield %>
   </body>
 </html>
