@@ -1,6 +1,7 @@
 module SatanicPages
   class Engine < ::Rails::Engine
     initializer("satanic_pages.view_helpers") do
+      require_relative "../../app/helpers/satanic_pages/layout_helper"
       ActiveSupport.on_load(:action_view) { include SatanicPages::LayoutHelper }
     end
 
