@@ -44,7 +44,10 @@ module SatanicPages
     end
 
     def render_static_page
-      render(current_page.slug)
+      # For nested pages, we need to render the template directly using its full path
+      # Construct the template path based on the controller's view path and the page path
+      template_path = "#{controller_path}/#{current_page.path}"
+      render(template: template_path)
     end
   end
 end

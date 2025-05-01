@@ -4,15 +4,17 @@ require "ostruct"
 
 module SatanicPages
   class Page
-    def initialize(full_path)
+    def initialize(full_path, base_path)
       @full_path = full_path
+      @base_path = base_path
+      @path = nil
       @slug = nil
       @content = nil
       @data = nil
       parse!
     end
 
-    attr_reader :slug, :full_path, :content, :data
+    attr_reader :slug, :path, :full_path, :content, :data
 
     delegate_missing_to :data
 
@@ -21,7 +23,10 @@ module SatanicPages
     def parse!
       @slug = File
         .basename(full_path)
-        .gsub(/(\.\w+)+$/, "")
+        .gsub(/(\..+)+$/, "")
+
+      rel_path = full_path.to_s.sub("#{@base_path}/", "")
+      @path = rel_path.gsub(/(\..+)+$/, "")
 
       @raw = File.read(full_path)
 
@@ -31,10 +36,11 @@ module SatanicPages
           nil
         rescue => e
           Rails.logger.error("Error parsing frontmatter: #{e.message}")
-          @data = OpenStruct.new
           $&
         end
       end
+
+      @data ||= OpenStruct.new
     end
   end
 end

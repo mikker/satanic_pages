@@ -9,3 +9,5 @@
 /test/dummy/storage/
 /test/dummy/tmp/
 Gemfile.lock
+
+**/.claude/settings.local.json
