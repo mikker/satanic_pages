@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+### Fixed
+
+- Load error from LayoutHelper
+
 ## 0.1.1
 
 ### Fixed
