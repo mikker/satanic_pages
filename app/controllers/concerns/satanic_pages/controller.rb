@@ -3,7 +3,7 @@ module SatanicPages
     extend ActiveSupport::Concern
 
     included do
-      helper_method :current_page
+      helper_method :data
     end
 
     class_methods do
@@ -33,6 +33,10 @@ module SatanicPages
 
     def current_page
       pages.find(slug_param)
+    end
+
+    def data
+      current_page&.data
     end
 
     # Bit of a hack here. As Rails resolves the layout pretty late, there's no

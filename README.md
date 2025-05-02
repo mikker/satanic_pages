@@ -14,12 +14,12 @@ tags:
 - devil worship
 - activity ideas
 ---
-By <%= current_page.author %>.
+By <%= data.author %>.
 
 Through trial and error, I've found that the perfect exorcism
 starts with a refreshing drink.
 
-Tagged <%= render "tag_list", tags: current_page.tags %>:
+Tagged <%= render "tag_list", tags: data.tags %>:
 
 ## Devilishly good lemonade recipe
 
@@ -32,7 +32,7 @@ In `app/views/layouts/pages.html.erb`:
 
 ```ruby
 <%= render_layout "application" do %>
-  <h1><%= current_page.title %></h1>
+  <h1><%= data.title %></h1>
   <article>
     <%= yield %>
   </article>

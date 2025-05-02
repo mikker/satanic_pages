@@ -16,8 +16,6 @@ module SatanicPages
 
     attr_reader :slug, :path, :full_path, :content, :data
 
-    delegate_missing_to :data
-
     private
 
     def parse!

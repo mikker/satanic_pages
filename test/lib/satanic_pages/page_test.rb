@@ -18,7 +18,7 @@ module SatanicPages
       assert_equal "about", page.path
       assert_equal @about_path, page.full_path
       assert page.content.present?
-      assert_equal "About the Satanic Pages", page.title
+      assert_equal "About the Satanic Pages", page.data.title
     end
 
     test("parses a nested page correctly") do
@@ -28,13 +28,13 @@ module SatanicPages
       assert_equal "recipes/lemonade", page.path
       assert_equal @nested_path, page.full_path
       assert page.content.present?
-      assert_equal "Hellfire Lemonade", page.title
+      assert_equal "Hellfire Lemonade", page.data.title
     end
 
     test("extracts frontmatter correctly") do
       page = Page.new(@nested_path, @base_path)
 
-      assert_equal "Hellfire Lemonade", page.title
+      assert_equal "Hellfire Lemonade", page.data.title
       assert_match "Quench Your Infernal Thirst", page.content
       assert_match "Hail Hydration!", page.content
     end
@@ -58,7 +58,7 @@ module SatanicPages
         assert_equal "html_page", page.slug
         assert_equal "html_page", page.path
         assert_match "<h1>Hello HTML</h1>", page.content
-        assert_equal "HTML Page", page.title
+        assert_equal "HTML Page", page.data.title
       end
     end
 
@@ -99,7 +99,7 @@ module SatanicPages
         assert_equal "deep_page", page.slug
         assert_equal "deep/nested/structure/deep_page", page.path
         assert_match "Deep content", page.content
-        assert_equal "Deep Page", page.title
+        assert_equal "Deep Page", page.data.title
       end
     end
 

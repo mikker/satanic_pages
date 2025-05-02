@@ -15,7 +15,7 @@ module SatanicPages
 
       data = OpenStruct.new(frontmatter)
 
-      render(inline: content, handler: :erb, locals: {current_page: data})
+      render(inline: content, handler: :erb, locals: {data:})
         # Remove template comments
         .gsub(/<!-- (BEGIN|END) (.*) -->/, "")
         # Force HTML tags to be inline
