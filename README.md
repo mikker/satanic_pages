@@ -1,6 +1,6 @@
 <center><img src="https://s3.brnbw.com/Artboard-GDaMBcpYEJ.png" alt="Satanic Pages" width=762 /></center>
 
-Static pages with YAML frontmatter, embedded in your Rails app.
+Static Markdown pages with YAML frontmatter and inline Erb, embedded in your Rails app.
 
 As simple as, …  
 **`app/views/pages/exorcism_tips.html.md`:**
