@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency("ostruct", ">= 0.6")
   spec.add_dependency("rails", ">= 7")
+  spec.add_dependency("markdown-rails", ">= 2")
 end

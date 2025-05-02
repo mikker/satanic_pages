@@ -1,6 +1,10 @@
 <%= render_layout "application" do %>
-  <div style="border: 1px dashed purple; padding: 20px">
-    <h1>Pages layout</h1>
-    <%= yield %>
-  </div>
+  <fieldset style="border: 1px dashed purple; padding: 20px">
+    <legend>layouts/pages.html.erb</legend>
+    <h3>Pages layout</h3>
+    <fieldset style="border: 1px dashed orange; padding: 20px">
+      <legend>Markdown</legend>
+      <%= yield %>
+    </fieldset>
+  </fieldset>
 <% end %>

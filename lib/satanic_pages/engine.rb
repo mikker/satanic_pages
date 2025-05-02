@@ -6,22 +6,9 @@ module SatanicPages
     end
 
     initializer("satanic_pages.register_markdown") do
-      if has_markdown_rails?
-        require "satanic_pages/markdown_template_handler"
-
-      end
-    end
-
-    private
-
-    def has_markdown_rails?
-      return true if defined?(MarkdownRails)
-
       require "markdown-rails"
+      require "satanic_pages/markdown_template_handler"
 
-      true
-    rescue LoadError
-      false
     end
   end
 end

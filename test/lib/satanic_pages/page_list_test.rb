@@ -13,9 +13,11 @@ module SatanicPages
       assert_equal "about", page.slug
     end
 
-    test("raises NotFound if not found") do
+    test("raises NotFound with !") do
+      assert_nil PageList.new("pages").find("heaven")
+
       assert_raises(PageList::PageNotFound) do
-        PageList.new("pages").find("heaven")
+        PageList.new("pages").find!("heaven")
       end
     end
 
@@ -31,4 +33,3 @@ module SatanicPages
     end
   end
 end
-

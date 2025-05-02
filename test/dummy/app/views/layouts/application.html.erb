@@ -21,8 +21,11 @@
     <%= stylesheet_link_tag :app %>
   </head>
 
-  <body style="border: 1px dashed green; padding: 20px;">
-    <h1>Application layout</h1>
-    <%= yield %>
+  <body>
+    <fieldset style="border: 1px dashed green; padding: 20px;">
+      <legend>layouts/application.html.erb</legend>
+      <h3>Application layout</h3>
+      <%= yield %>
+    </fieldset>
   </body>
 </html>

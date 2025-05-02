@@ -5,8 +5,8 @@ module SatanicPages
     class PageNotFound < StandardError
     end
 
-    def initialize(ctrl)
-      @base_path = Rails.root.join("app/views/", ctrl)
+    def initialize(controller_name)
+      @base_path = Rails.root.join("app/views/", controller_name)
 
       @pages = Dir[base_path + "**/*.html*"]
         .reject { |path| path.match?(/(^_|\/_)/) }
@@ -18,10 +18,16 @@ module SatanicPages
 
     attr_reader :base_path, :pages
 
-    def find(path)
+    def find!(path)
       @pages.fetch(path)
     rescue KeyError
       raise PageNotFound, "No page `#{path}' found at #{base_path}"
+    end
+
+    def find(path)
+      find!(path)
+    rescue PageNotFound
+      nil
     end
 
     def match?(req_path)

@@ -44,7 +44,7 @@ Add this line to your application's Gemfile:
 
 ```sh
 $ bundle add satanic_pages
-$ bundle add markdown-rails # optional, but probably
+$ bundle install
 ```
 
 Add the _Concern_ to a regular controller:
