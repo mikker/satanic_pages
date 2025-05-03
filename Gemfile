@@ -6,4 +6,3 @@ gemspec
 gem "puma"
 gem "sqlite3"
 gem "propshaft"
-gem "markdown-rails"

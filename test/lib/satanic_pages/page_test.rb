@@ -1,7 +1,5 @@
 require "test_helper"
 
-require "tempfile"
-
 module SatanicPages
   class PageTest < ActiveSupport::TestCase
     setup do
