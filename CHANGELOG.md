@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+- `current_page` is now `data` and is always, only the frontmatter
+- `markdown-rails` is now a hard requirement is the gem doesn't make much sense without it
+- Gem is now a `Railtie` instead of a full `Engine`.
+
 ## 0.1.2
 
 ### Fixed
