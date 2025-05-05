@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SatanicPages
   class Railtie < ::Rails::Railtie
     initializer("satanic_pages.view_helpers") do
