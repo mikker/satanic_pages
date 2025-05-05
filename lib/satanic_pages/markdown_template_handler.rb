@@ -2,6 +2,8 @@
 
 module SatanicPages
   class MarkdownTemplateHandler < MarkdownRails::Renderer::Rails
+    include Redcarpet::Render::SmartyPants
+
     def preprocess(source)
       frontmatter, rest = Frontmatter.parse(source)
 
