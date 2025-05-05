@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SatanicPages
   module LayoutHelper
     # Thank you Sitepress for this lil' goodie

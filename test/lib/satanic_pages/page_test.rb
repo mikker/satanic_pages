@@ -44,7 +44,7 @@ module SatanicPages
         assert_equal "test_page", page.slug
         assert_equal "test_page", page.path
         assert_match "# Just content", page.content
-        assert page.data.is_a?(OpenStruct), "Should initialize data as OpenStruct"
+        assert page.data.is_a?(Frontmatter), "Should initialize data as Frontmatter"
         assert_nil page.data.title
       end
     end
@@ -74,7 +74,7 @@ module SatanicPages
         page = Page.new(temp_file, @tmp_path)
 
         assert_equal "invalid_frontmatter", page.slug
-        assert page.data.is_a?(OpenStruct), "Should initialize data as OpenStruct even with invalid YAML"
+        assert page.data.is_a?(Frontmatter), "Should initialize data as Frontmatter even with invalid YAML"
         # The entire frontmatter block should be included in content since parsing failed
         assert_match "---\ntitle: 'Invalid: YAML'\n  broken: indentation\n---", page.content
       end

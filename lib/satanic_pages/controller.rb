@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SatanicPages
   module Controller
     extend ActiveSupport::Concern
