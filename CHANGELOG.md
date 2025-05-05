@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0
+
+- Uses `Frontmatter` object for `data` instead of OpenStruct
+
 ## 0.2.0
 
 - `current_page` is now `data` and is always, only the frontmatter
