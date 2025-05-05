@@ -1,24 +1,40 @@
 # frozen_string_literal: true
 
-require "ostruct"
-
 module SatanicPages
   class Frontmatter
-    def initialize(source)
-      @source = source
-      @data = nil
-      @rest = nil
-      parse!
+    class MissingAttributeError < StandardError
     end
 
-    attr_reader :source, :data, :rest
+    def initialize(hash)
+      @hash = (hash&.with_indifferent_access || {}).freeze
+    end
 
-    private
+    def to_h
+      @hash
+    end
 
-    def parse!
+    def method_missing(name, *args)
+      if name.to_s.end_with?("!")
+        attribute = name.to_s.chomp("!").to_sym
+
+        unless @hash[attribute]
+          raise MissingAttributeError, "Missing attribute: #{name.to_s.chomp("!")}"
+        end
+
+        @hash[attribute]
+
+      elsif name.to_s.end_with?("?")
+        @hash[name.to_s.chomp("?").to_sym].present?
+
+      else
+        @hash[name]
+      end
+    end
+
+    def self.parse(source)
       frontmatter = nil
 
-      @rest = source.gsub(/\A---\n(.*?)\n---\n/m) do
+      rest = source.gsub(/\A---\n(.*?)\n---\n/m) do
         begin
           frontmatter = YAML.safe_load($1)
           ""
@@ -28,7 +44,7 @@ module SatanicPages
         end
       end
 
-      @data = OpenStruct.new(frontmatter)
+      [new(frontmatter), rest]
     end
   end
 end

@@ -39,6 +39,28 @@ In `app/views/layouts/pages.html.erb`:
 <% end %>
 ```
 
+Frontmatter is supplied as a struct like object.
+
+Given this frontmatter:
+
+```yaml
+---
+author: Beelzebub
+---
+```
+
+Use `!` and `?` method helpers for added strictness.
+
+```ruby
+data.author  # => "Beelzebub"
+data.author! # => "Beelzebub"
+data.author? # => true
+
+data.title   # => nil
+data.title!  # => raises SatanicPages::Frontmatter::MissingAttributeError
+data.title?  # => false
+```
+
 ## Installation
 Add this line to your application's Gemfile:
 

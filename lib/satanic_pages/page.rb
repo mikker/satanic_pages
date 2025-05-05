@@ -26,9 +26,7 @@ module SatanicPages
 
       @raw = File.read(full_path)
 
-      fm = Frontmatter.new(@raw)
-      @content = fm.rest
-      @data = fm.data
+      @data, @content = Frontmatter.parse(@raw)
     end
   end
 end

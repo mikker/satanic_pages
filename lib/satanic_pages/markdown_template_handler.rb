@@ -3,9 +3,9 @@
 module SatanicPages
   class MarkdownTemplateHandler < MarkdownRails::Renderer::Rails
     def preprocess(source)
-      frontmatter = Frontmatter.new(source)
+      frontmatter, rest = Frontmatter.parse(source)
 
-      render(inline: frontmatter.rest, handler: :erb, locals: {data: frontmatter.data})
+      render(inline: rest, handler: :erb, locals: {data: frontmatter})
         # Remove template comments
         .gsub(/<!-- (BEGIN|END) (.*) -->/, "")
         # Force HTML tags to be inline
