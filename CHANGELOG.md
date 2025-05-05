@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.1
+
+- Include Smarty Pants formatting
+
 ## 0.3.0
 
 - Uses `Frontmatter` object for `data` instead of OpenStruct
