@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.2
+
+- Fix Rails template annotation stripping for multiline `BEGIN inline template` comments.
+
 ## 0.3.1
 
 - Include Smarty Pants formatting
